@@ -1,22 +1,24 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./App";
 
 function FormTest() {
-  const [firstName, setFirstName] = useState("");
+  const { user, setUser } = useContext(UserContext);
+
   const handleFirstName = (e) => {
-    setFirstName(e.target.value);
+    setUser(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Form submitted. Thanks " + firstName);
+    alert("Form submitted. Thanks " + user);
   };
 
   return (
     <>
-      <h1>Aloha</h1>
+      <h1>Aloha {user}</h1>
       <form onSubmit={handleSubmit}>
         <label>
           FirstName: &nbsp;
-          <input type="text" value={firstName} onChange={handleFirstName} />
+          <input type="text" value={user} onChange={handleFirstName} />
         </label>
       </form>
     </>

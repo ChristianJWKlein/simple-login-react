@@ -1,17 +1,19 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import FormTest from "./FormTest";
 import Header from "./components/Header";
 import Login from "./scenes/Login";
 
+export const UserContext = createContext(null);
+
 function App() {
   const [user, setUser] = useState();
   return (
-    <>
-      <Header user={user} setUser={setUser} />
+    <UserContext.Provider value={{ user, setUser }}>
+      <Header />
       <FormTest />
-      {!user && <Login setUser={setUser} />}
-    </>
+      {!user && <Login />}
+    </UserContext.Provider>
   );
 }
 

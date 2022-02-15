@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../App";
 
-function Header({ user, setUser }) {
+function Header() {
+  const { user, setUser } = useContext(UserContext);
   return (
     <header>
       <nav>
         {user ? (
-          <button onClick={() => setUser(false)}>Logout</button>
+          <button onClick={() => setUser(null)}>Logout</button>
         ) : (
-          <button onClick={() => setUser(true)}>Login</button>
+          <button onClick={() => setUser("CK")}>Login</button>
         )}
       </nav>
     </header>
